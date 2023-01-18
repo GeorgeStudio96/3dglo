@@ -1,8 +1,8 @@
-import oneFunc from './modules/one'
+import timer from './modules/timer'
 import twoFunc from './modules/two'
 
 
 
 
-oneFunc()
+timer('22 januar 2023')
 twoFunc()
