@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holidays</title>
+    <style>
+        .root {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .h1 {
+            font-size: 25px;
+            line-height: 120%;
+        }
+
+        .h2 {
+            font-size: 16px;
+            line-height: 120%;
+        }
+
+        .today {
+            display: flex;
+        }
+
+        .current-time {
+            display: inline-block;
+            margin-left: 3px;
+        }
+
+        .day {
+            margin-left: 3px;
+        }
+    </style>
+    <script src="./holidays.js" defer></script>
+</head>
+
+<!--Добрый день (утро, вечер, ночь в зависимости от времени суток)
+Сегодня: Понедельник
+Текущее время: 12:05:15 PM
+До нового года осталось 175 дней 
+-->
+
+
+<div class="root">
+    <div class="greeting">приветствие</div>
+    <div class="today">Сегодня:<span class='day'>Пон</span></div>
+    <div class="today">
+        <div class="text">Текущее время:</div>
+        <div class="current-time">00:00:00</div>
+    </div>
+    <div class="holidays-day">До 8го марта осталось <span class="day-count">1</span> <span class="day-text">дней</span>
+    </div>
+</div>
+
+<body>
+
+</body>
+
+</html>
