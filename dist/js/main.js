@@ -16,7 +16,17 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_two__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/two */ \"./modules/two.js\");\n\n\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('22 januar 2023')\n;(0,_modules_two__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./modules/menu.js\");\n\n\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('22 march 2023')\n;(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n\n//# sourceURL=webpack:///./index.js?");
+
+/***/ }),
+
+/***/ "./modules/menu.js":
+/*!*************************!*\
+  !*** ./modules/menu.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst menu = function () {\n\n    const menuBtn = document.querySelector('.menu')\n    const menu = document.querySelector('menu')\n    const closeBtn = menu.querySelector('.close-btn')\n    const menuItems = document.querySelectorAll('ul>li>a')\n\n    console.log(menuBtn);\n    console.log(menu);\n    console.log(menuItems)\n\n    const closeMenu = () => {\n        if (!menu.style.transform) {\n            menu.style.transform = `translateX(0)`\n        } else {\n            menu.style.transform = ``\n        }\n    }\n\n    menuBtn.addEventListener('click', () => {\n        closeMenu()\n\n        closeBtn.addEventListener('click', () => {\n            closeMenu()\n        })\n\n\n        for (let i = 0; i < menuItems.length; i++) {\n            menuItems[i].addEventListener('click', () => {\n                closeMenu()\n            })\n        }\n\n    })\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menu);\n\n//# sourceURL=webpack:///./modules/menu.js?");
 
 /***/ }),
 
@@ -27,16 +37,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst timer = (deadline) => {\n\n    const timerHours = document.getElementById('timer-hours')\n    const timerMinutes = document.getElementById('timer-minutes')\n    const timerSeconds = document.getElementById('timer-second')\n\n\n    const getTimeRemaning = () => {\n        let dateStop = new Date(deadline).getTime()\n        let dateNow = new Date().getTime()\n\n        let timeRemaning = (dateStop - dateNow) / 1000\n\n        let hours = Math.floor(timeRemaning / 60 / 60)\n        if (hours < 10) {\n            hours = '0' + Math.floor(timeRemaning / 60 / 60)\n        }\n        let minutes = Math.floor((timeRemaning / 60 % 60))\n        if (minutes < 10) {\n            minutes = '0' + Math.floor((timeRemaning / 60 % 60))\n        }\n        let seconds = Math.floor(timeRemaning % 60)\n        if (seconds < 10) {\n            seconds = '0' + Math.floor(timeRemaning % 60)\n        }\n        return { timeRemaning, hours, minutes, seconds }\n    }\n\n\n\n    const updateClock = () => {\n        let getTime = getTimeRemaning()\n        timerHours.textContent = getTime.hours\n        timerMinutes.textContent = getTime.minutes\n        timerSeconds.textContent = getTime.seconds\n\n        if (getTime.timeRemaning > 0) {\n            // setTimeout(updateClock, 1000)\n            setInterval(updateClock, 1000)\n        } else {\n            timerHours.innerHTML = '00'\n            timerMinutes.innerHTML = '00'\n            timerSeconds.innerHTML = '00'\n        }\n\n    }\n\n    updateClock()\n\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timer);\n\n//# sourceURL=webpack:///./modules/timer.js?");
-
-/***/ }),
-
-/***/ "./modules/two.js":
-/*!************************!*\
-  !*** ./modules/two.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst twoFunc = function () {\n    console.log('this is two js');\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (twoFunc);\n\n//# sourceURL=webpack:///./modules/two.js?");
 
 /***/ })
 

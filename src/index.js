@@ -1,8 +1,8 @@
 import timer from './modules/timer'
-import twoFunc from './modules/two'
+import menu from './modules/menu'
 
 
 
 
-timer('22 januar 2023')
-twoFunc()
+timer('22 march 2023')
+menu()
