@@ -5,34 +5,27 @@ const menu = function () {
     const closeBtn = menu.querySelector('.close-btn')
     const menuItems = document.querySelectorAll('ul>li>a')
 
-    console.log(menuBtn);
-    console.log(menu);
-    console.log(menuItems)
-
-    const closeMenu = () => {
-        if (!menu.style.transform) {
-            menu.style.transform = `translateX(0)`
-        } else {
-            menu.style.transform = ``
-        }
+    const handleMenu = () => {
+        // if (!menu.style.transform) {
+        //     menu.style.transform = `translateX(0)`
+        // } else {
+        //     menu.style.transform = ``
+        // }
+        menu.classList.toggle('active-menu')
     }
 
-    menuBtn.addEventListener('click', () => {
-        closeMenu()
+    menuBtn.addEventListener('click', handleMenu)
+    closeBtn.addEventListener('click', handleMenu)
 
-        closeBtn.addEventListener('click', () => {
-            closeMenu()
+
+    for (let i = 0; i < menuItems.length; i++) {
+        menuItems[i].addEventListener('click', () => {
+            handleMenu()
         })
-
-
-        for (let i = 0; i < menuItems.length; i++) {
-            menuItems[i].addEventListener('click', () => {
-                closeMenu()
-            })
-        }
-
-    })
+    }
 
 }
+
+
 
 export default menu
