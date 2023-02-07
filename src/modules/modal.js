@@ -20,42 +20,50 @@ const modal = () => {
     }
 
 
+    const clientWidthMax = () => {
+        popup.style.opacity = 0
+
+        popupBtn.forEach(item => {
+            item.addEventListener('click', () => {
+                popup.style.display = 'block'
+                setTimeout(modalAnimationOpen, 100)
+            })
+        })
+
+        popupClose.addEventListener('click', () => {
+            modalAnimationClose()
+            setTimeout(popupHide, 1000)
+        })
+    }
+
+    const clientWidthMin = () => {
+        console.log('меньше 576');
+
+        popupBtn.forEach(item => {
+            item.addEventListener('click', () => {
+                popup.style.display = 'block'
+            })
+        })
+
+        popupClose.addEventListener('click', () => {
+            popup.style.display = 'none'
+        })
+    }
 
 
+    if (width > 576) {
+        clientWidthMax()
+    } else {
+        clientWidthMin()
+    }
 
     window.addEventListener('resize', () => {
 
         if (width > 576) {
-
-            popup.style.opacity = 0
-
-            popupBtn.forEach(item => {
-                item.addEventListener('click', () => {
-                    popup.style.display = 'block'
-                    setTimeout(modalAnimationOpen, 100)
-                })
-            })
-
-            popupClose.addEventListener('click', () => {
-                modalAnimationClose()
-                setTimeout(popupHide, 1000)
-            })
-
+            clientWidthMax()
         } else {
-            console.log('меньше 576');
-
-            popupBtn.forEach(item => {
-                item.addEventListener('click', () => {
-                    popup.style.display = 'block'
-                })
-            })
-
-            popupClose.addEventListener('click', () => {
-                popup.style.display = 'none'
-            })
-
+            clientWidthMin()
         }
-
     })
 
 }
