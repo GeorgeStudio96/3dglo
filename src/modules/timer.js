@@ -28,6 +28,7 @@ const timer = (deadline) => {
 
 
 
+
     const updateClock = () => {
         let getTime = getTimeRemaning()
         timerHours.textContent = getTime.hours
@@ -35,15 +36,18 @@ const timer = (deadline) => {
         timerSeconds.textContent = getTime.seconds
 
         if (getTime.timeRemaning > 0) {
-            // setTimeout(updateClock, 1000)
-            setInterval(updateClock, 1000)
+            console.log('проверка setInterval');
         } else {
             timerHours.innerHTML = '00'
             timerMinutes.innerHTML = '00'
             timerSeconds.innerHTML = '00'
+            clearInterval(timerID)
         }
-
     }
+
+    let timerID = setInterval(updateClock, 1000)
+
+
 
     updateClock()
 
