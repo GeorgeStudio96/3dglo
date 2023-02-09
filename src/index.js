@@ -5,7 +5,6 @@ import smooth from './modules/smooth';
 import validate from './modules/validate';
 
 
-
 timer('22 march 2023')
 menu()
 modal()

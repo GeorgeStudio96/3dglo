@@ -1,67 +1,51 @@
+import animate from "./animate"
+
 const modal = () => {
+
     const popupBtn = document.querySelectorAll('.popup-btn')
     const popup = document.querySelector('.popup')
     const popupClose = popup.querySelector('.popup-close')
 
 
-    const width = window.innerWidth
 
-    const modalAnimationOpen = () => {
-        popup.style.opacity = 1;
-        popup.style.transition = "opacity 1s";
-    }
-    const modalAnimationClose = () => {
-        popup.style.opacity = 0;
-        popup.style.transition = "opacity 1s";
-    }
-    const popupHide = () => {
-        popup.style.display = 'none'
-    }
-
-
-    const clientWidthMax = () => {
-        popup.style.opacity = 0
-
-        popupBtn.forEach(item => {
-            item.addEventListener('click', () => {
-                popup.style.display = 'block'
-                setTimeout(modalAnimationOpen, 100)
-            })
+    popupBtn.forEach(item => {
+        item.addEventListener('click', () => {
+            popup.style.display = 'block'
         })
+    })
 
-        popupClose.addEventListener('click', () => {
-            modalAnimationClose()
-            setTimeout(popupHide, 1000)
+    popupClose.addEventListener('click', () => {
+        animate({
+            duration: 1000,
+            timing: function (timeFraction) {
+                return timeFraction;
+            },
+            draw: function (progress) {
+                popup.style.display = 'none'
+                popup.style.opacity = progress / 100 + '%';
+            }
         })
-    }
+    })
 
-    const clientWidthMin = () => {
-        console.log('меньше 576');
-
-        popupBtn.forEach(item => {
-            item.addEventListener('click', () => {
-                popup.style.display = 'block'
-            })
-        })
-
-        popupClose.addEventListener('click', () => {
-            popup.style.display = 'none'
-        })
-    }
-
-
-    if (width > 576) {
-        clientWidthMax()
-    } else {
-        clientWidthMin()
-    }
 
     window.addEventListener('resize', () => {
+        if (window.innerWidth > 700) {
+            popupBtn.forEach(item => {
+                item.addEventListener('click', () => {
+                    animate({
+                        duration: 1000,
+                        timing: function (timeFraction) {
+                            return timeFraction;
+                        },
+                        draw: function (progress) {
+                            popup.style.display = 'block'
+                            popup.style.opacity = progress * 100 + '%';
+                        }
+                    })
+                })
+            })
 
-        if (width > 576) {
-            clientWidthMax()
-        } else {
-            clientWidthMin()
+
         }
     })
 
