@@ -2,10 +2,9 @@ const modal = () => {
     const popupBtn = document.querySelectorAll('.popup-btn')
     const popup = document.querySelector('.popup')
     const popupClose = popup.querySelector('.popup-close')
-    const width = document.documentElement.clientWidth
 
 
-
+    const width = window.innerWidth
 
     const modalAnimationOpen = () => {
         popup.style.opacity = 1;
@@ -65,6 +64,7 @@ const modal = () => {
             clientWidthMin()
         }
     })
+
 
 }
 
