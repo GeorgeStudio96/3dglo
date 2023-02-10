@@ -51,6 +51,7 @@ const modal = () => {
     }
 
 
+
     if (width > 576) {
         clientWidthMax()
     } else {
