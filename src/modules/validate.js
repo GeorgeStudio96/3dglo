@@ -4,11 +4,13 @@ const validate = () => {
     const calcSquare = document.querySelector('.calc-square')
     const calcCount = document.querySelector('.calc-count')
     const calcDay = document.querySelector('.calc-day')
-    const inputText = document.querySelectorAll('input[type=text]')
     const inputEmail = document.querySelectorAll('input[type=email]')
     const inputTel = document.querySelectorAll('input[type=tel]')
+    const form2Message = document.getElementById('form2-message')
+    const inputTextPlaceholder = document.querySelectorAll('*[placeholder="Ваше имя"]')
 
 
+    console.log(inputTextPlaceholder);
 
     const validateInputOnlyNumber = (e) => {
         e.target.value = e.target.value.replace(/\D+/, '')
@@ -30,8 +32,8 @@ const validate = () => {
     calcSquare.addEventListener('input', validateInputOnlyNumber)
     calcCount.addEventListener('input', validateInputOnlyNumber)
     calcDay.addEventListener('input', validateInputOnlyNumber)
-    inputText.forEach(item => item.addEventListener('input', validateInputText)
-    )
+    inputTextPlaceholder.forEach(item => item.addEventListener('input', validateInputText))
+    form2Message.addEventListener('input', validateInputText)
     inputEmail.forEach(item => item.addEventListener('input', validateEmail))
     inputTel.forEach(item => item.addEventListener('input', validatePhone))
 
