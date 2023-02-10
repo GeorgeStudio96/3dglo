@@ -2,28 +2,18 @@ const menu = function () {
 
     const menuBtn = document.querySelector('.menu')
     const menu = document.querySelector('menu')
-    const closeBtn = menu.querySelector('.close-btn')
-    const menuItems = document.querySelectorAll('ul>li>a')
 
     const handleMenu = () => {
-        // if (!menu.style.transform) {
-        //     menu.style.transform = `translateX(0)`
-        // } else {
-        //     menu.style.transform = ``
-        // }
         menu.classList.toggle('active-menu')
     }
 
-    menuBtn.addEventListener('click', handleMenu)
-    closeBtn.addEventListener('click', handleMenu)
-
-
-    for (let i = 0; i < menuItems.length; i++) {
-        menuItems[i].addEventListener('click', () => {
+    menu.addEventListener('click', (e) => {
+        if (e.target.closest('ul>li>a') || e.target.classList.contains('close-btn')) {
             handleMenu()
-        })
-    }
+        }
+    })
 
+    menuBtn.addEventListener('click', handleMenu)
 }
 
 
