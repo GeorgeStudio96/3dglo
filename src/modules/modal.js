@@ -6,50 +6,32 @@ const modal = () => {
     const popup = document.querySelector('.popup')
     const popupClose = popup.querySelector('.popup-close')
 
-
+    popupClose.addEventListener('click', () => {
+        popup.style.display = 'none'
+        popup.style.opacity = '0';
+    })
 
     popupBtn.forEach(item => {
         item.addEventListener('click', () => {
-            popup.style.display = 'block'
-        })
-    })
-
-    popupClose.addEventListener('click', () => {
-        animate({
-            duration: 1000,
-            timing: function (timeFraction) {
-                return timeFraction;
-            },
-            draw: function (progress) {
-                popup.style.display = 'none'
-                popup.style.opacity = progress / 100 + '%';
+            if (window.innerWidth < 700) {
+                popup.style.display = 'block'
+                popup.style.opacity = '1';
+            } else {
+                popup.style.display = 'block'
+                animate({
+                    duration: 1000,
+                    timing: function (timeFraction) {
+                        return timeFraction;
+                    },
+                    draw: function (progress) {
+                        popup.style.opacity = progress;
+                    }
+                })
             }
         })
     })
-
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 700) {
-            popupBtn.forEach(item => {
-                item.addEventListener('click', () => {
-                    animate({
-                        duration: 1000,
-                        timing: function (timeFraction) {
-                            return timeFraction;
-                        },
-                        draw: function (progress) {
-                            popup.style.display = 'block'
-                            popup.style.opacity = progress * 100 + '%';
-                        }
-                    })
-                })
-            })
-
-
-        }
-    })
-
-
 }
 
 export default modal
+
+
