@@ -1,3 +1,12 @@
+const slicer = (str, num) => {
+    return str.trim().length > num ? str.trim().substring(0, num).trim() + '...' : str.trim()
+}
+
+
+
+
+
+
 const animate = ({ duration, draw, timing }) => {
     let start = performance.now();
 
@@ -16,4 +25,6 @@ const animate = ({ duration, draw, timing }) => {
     });
 }
 
-export default animate
+
+
+export { slicer, animate }

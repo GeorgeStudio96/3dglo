@@ -16,7 +16,7 @@
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./modules/modal.js\");\n/* harmony import */ var _modules_smooth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/smooth */ \"./modules/smooth.js\");\n/* harmony import */ var _modules_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/validate */ \"./modules/validate.js\");\n/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/tabs */ \"./modules/tabs.js\");\n\n\n\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('22 march 2023')\n;(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n;(0,_modules_smooth__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\n;(0,_modules_validate__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\n;(0,_modules_tabs__WEBPACK_IMPORTED_MODULE_5__[\"default\"])()\n\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./modules/modal.js\");\n/* harmony import */ var _modules_smooth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/smooth */ \"./modules/smooth.js\");\n/* harmony import */ var _modules_validate__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/validate */ \"./modules/validate.js\");\n/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/tabs */ \"./modules/tabs.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/slider */ \"./modules/slider.js\");\n/* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/calc */ \"./modules/calc.js\");\n/* harmony import */ var _modules_test__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/test */ \"./modules/test.js\");\n\n\n\n\n\n\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('22 march 2023')\n;(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n;(0,_modules_smooth__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\n;(0,_modules_validate__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\n;(0,_modules_tabs__WEBPACK_IMPORTED_MODULE_5__[\"default\"])()\n;(0,_modules_slider__WEBPACK_IMPORTED_MODULE_6__[\"default\"])()\n;(0,_modules_calc__WEBPACK_IMPORTED_MODULE_7__[\"default\"])()\n;(0,_modules_test__WEBPACK_IMPORTED_MODULE_8__[\"default\"])()\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -27,6 +27,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst animate = ({ duration, draw, timing }) => {\n    let start = performance.now();\n\n    requestAnimationFrame(function animate(time) {\n        let timeFraction = (time - start) / duration;\n        if (timeFraction > 1) timeFraction = 1;\n\n        let progress = timing(timeFraction)\n\n        draw(progress);\n\n        if (timeFraction < 1) {\n            requestAnimationFrame(animate);\n        }\n\n    });\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (animate);\n\n//# sourceURL=webpack:///./modules/animate.js?");
+
+/***/ }),
+
+/***/ "./modules/calc.js":
+/*!*************************!*\
+  !*** ./modules/calc.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst calc = (price = 100) => {\n    console.log(price)\n\n    const calcBlock = document.querySelector('.calc-block')\n    const calcType = document.querySelector('.calc-type')\n    const calcSquare = document.querySelector('.calc-square')\n    const calcCount = document.querySelector('.calc-count')\n    const calcDay = document.querySelector('.calc-day')\n    const total = document.getElementById('total')\n\n    const countCalc = () => {\n        const calcTypeValue = calcType.options[calcType.selectedIndex].value\n        const calcSquareValue = +calcSquare.value\n\n        let totalValue = 0\n        let calcCountValue = 1\n        let calcDayValue = 1\n\n        if (calcDay.value && calcDay.value < 5) {\n            calcDayValue = 2\n        } else if (calcDay.value && calcDay.value < 10) {\n            calcDayValue = 1.5\n        }\n\n        if (calcCount.value > 1) {\n            console.log('Больше');\n            calcCountValue += +calcCount.value / 10\n        }\n\n        if (calcType.value && calcSquare.value) {\n            totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue\n        } else {\n            totalValue = 0\n        }\n\n        total.textContent = totalValue\n\n        console.log(calcSquareValue);\n        console.log(+calcTypeValue);\n    }\n\n    calcBlock.addEventListener('input', (e) => {\n        if (e.target === calcType ||\n            e.target === calcSquare ||\n            e.target === calcCount ||\n            e.target === calcDay) {\n            countCalc()\n        }\n        // countCalc()\n    })\n\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calc);\n\n//# sourceURL=webpack:///./modules/calc.js?");
+
+/***/ }),
+
+/***/ "./modules/helpers.js":
+/*!****************************!*\
+  !*** ./modules/helpers.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"slicer\": () => (/* binding */ slicer)\n/* harmony export */ });\nconst slicer = (str, num) => {\n    return str.trim().length > num ? str.trim().substring(0, num).trim() + '...' : str.trim()\n}\n\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./modules/helpers.js?");
 
 /***/ }),
 
@@ -50,6 +70,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./modules/slider.js":
+/*!***************************!*\
+  !*** ./modules/slider.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst slider = () => {\n    console.log('slider');\n    const potrfolioContent = document.querySelector('.portfolio-content')\n    const potrfolioItems = document.querySelectorAll('.portfolio-item')\n    const dotsWrapper = document.querySelector('.portfolio-dots')\n\n    const dotsAdded = () => {\n        for (let i = 0; i < potrfolioItems.length; i++) {\n            const newDot = document.createElement('li')\n            newDot.classList.add('dot')\n            dotsWrapper.append(newDot)\n        }\n    }\n    dotsAdded()\n\n    const dots = document.querySelectorAll('.dot')\n    console.log(dots);\n\n\n    let currentSlide = 0;\n    let interval\n    let timerInterval = 2000\n\n\n    const startSlide = (timerInterval) => {\n        interval = setInterval(autoSlide, timerInterval)\n    }\n\n\n\n\n    const autoSlide = () => {\n        prevSlide(potrfolioItems, currentSlide, 'portfolio-item-active')\n        prevSlide(dots, currentSlide, 'dot-active')\n        currentSlide++\n\n        if (currentSlide >= potrfolioItems.length) {\n            currentSlide = 0\n        }\n\n        nextSlide(potrfolioItems, currentSlide, 'portfolio-item-active')\n        nextSlide(dots, currentSlide, 'dot-active')\n\n    }\n\n\n\n    const nextSlide = (elems, index, strClass) => {\n        elems[index].classList.add(strClass)\n\n    }\n\n    const prevSlide = (elems, index, strClass) => {\n        elems[index].classList.remove(strClass)\n    }\n\n    const stopSlide = () => {\n        clearInterval(interval)\n    }\n\n\n\n    potrfolioContent.addEventListener('click', (e) => {\n        e.preventDefault()\n\n        if (!e.target.matches('.dot, portfolio-btn')) {\n            return\n        }\n\n        prevSlide(potrfolioItems, currentSlide, 'portfolio-item-active')\n        prevSlide(dots, currentSlide, 'dot-active')\n\n        if (e.target.matches('#arrow-right')) {\n            console.log('arrow-right');\n            currentSlide++\n        } else if (e.target.matches('#arrow-left')) {\n            console.log('arrow-left');\n            currentSlide--\n        } else if (e.target.classList.contains('dot'))\n            console.log('dot');\n        dots.forEach((dot, index) => {\n            if (e.target === dot) {\n                currentSlide = index\n            }\n        })\n\n        if (currentSlide >= potrfolioItems.length) {\n            currentSlide = 0\n        }\n        if (currentSlide < 0) {\n            currentSlide = potrfolioItems.length - 1\n        }\n\n        nextSlide(potrfolioItems, currentSlide, 'portfolio-item-active')\n        nextSlide(dots, currentSlide, 'dot-active')\n    })\n\n\n    potrfolioContent.addEventListener('mouseenter', (e) => {\n        if (e.target.matches('.dot, .portfolio-btn')) {\n            stopSlide()\n        }\n    }, true)\n\n    potrfolioContent.addEventListener('mouseleave', (e) => {\n        if (e.target.matches('.dot, .portfolio-btn')) {\n            startSlide(timerInterval)\n        }\n    }, true)\n\n    startSlide(timerInterval)\n\n\n}\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (slider);\n\n//# sourceURL=webpack:///./modules/slider.js?");
+
+/***/ }),
+
 /***/ "./modules/smooth.js":
 /*!***************************!*\
   !*** ./modules/smooth.js ***!
@@ -67,6 +97,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst tabs = () => {\n    console.log('tabs');\n\n    const tabPanel = document.querySelector('.service-header')\n    const tabs = document.querySelectorAll('.service-header-tab')\n    const tabContent = document.querySelectorAll('.service-tab')\n\n\n    tabPanel.addEventListener('click', (e) => {\n\n        if (e.target.closest('.service-header-tab')) {\n            const tabBtn = e.target.closest('.service-header-tab')\n\n            tabs.forEach((item, index) => {\n                if (item === tabBtn) {\n                    item.classList.add('active')\n                    tabContent[index].classList.remove('d-none')\n                } else {\n                    item.classList.remove('active')\n                    tabContent[index].classList.add('d-none')\n                }\n\n            })\n        }\n    })\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabs);\n\n//# sourceURL=webpack:///./modules/tabs.js?");
+
+/***/ }),
+
+/***/ "./modules/test.js":
+/*!*************************!*\
+  !*** ./modules/test.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./modules/helpers.js\");\n\n\nconst test = () => {\n    const text = '    Это рыбный текст для проверки функции слайсер    '\n    console.log((0,_helpers__WEBPACK_IMPORTED_MODULE_0__.slicer)(text, 20));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (test);\n\n\n\n//# sourceURL=webpack:///./modules/test.js?");
 
 /***/ }),
 
