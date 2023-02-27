@@ -7,6 +7,7 @@ import tabs from './modules/tabs';
 import slider from './modules/slider';
 import calc from './modules/calc';
 import test from './modules/test';
+import sendForm from './modules/sendForm';
 
 timer('22 march 2023')
 menu()
@@ -17,3 +18,14 @@ tabs()
 slider()
 calc()
 test()
+sendForm(
+    {
+        formId: 'form113',
+        someElem: [
+            {
+                type: 'block',
+                id: 'total'
+            }
+        ]
+    }
+)
